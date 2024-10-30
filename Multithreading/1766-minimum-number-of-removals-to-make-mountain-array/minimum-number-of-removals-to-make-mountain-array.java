@@ -52,12 +52,14 @@ class Solution {
         longestIncreasingSubsequenceRightToLeft(nums, 0, -1, rightToLeftDp);
 
 
-        for(int i=0; i<=size; i++){
-            for(int j=0; j<=size; j++){
-                // System.out.println("leftToRightDp[" + i + "][" + j +"] =" + leftToRightDp[i][j]);
-                // System.out.println("rightToLeftDp[" + i+ "][" +j + "] =" + rightToLeftDp[i][j]);
-            }
-        }
+        // for(int i=0; i<=size; i++){
+        //     for(int j=0; j<=size; j++){
+        //         // System.out.println("leftToRightDp[" + i + "][" + j +"] =" + leftToRightDp[i][j]);
+        //         // System.out.println("rightToLeftDp[" + i+ "][" +j + "] =" + rightToLeftDp[i][j]);
+        //     }
+        // }
+
+        
         //leftToRightDp[i+1][0] contains maximum length of increasing subsequence for arr[i] in Left to Right Direction
         //rightToLeftDp[i+1][0] contains maximum length of increasing subsequence for arr[i] in Right to left Direction
 
