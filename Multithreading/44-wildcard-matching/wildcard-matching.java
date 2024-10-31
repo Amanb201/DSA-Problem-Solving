@@ -30,7 +30,8 @@ class Solution {
             singleWildcardMatch = isWildcardMatchSuccessful(start, pat, index1-1, index2-1, memoizationDpArray);
         }
         else if(pat.charAt(index2) == '*'){
-            //First matching * with empty character 
+            //First matching * with empty character, it has be computed first, othewise, right most * can match 
+            //all the chars in first string and store false in DP array
             sequenceWildcardMatch = isWildcardMatchSuccessful(start, pat, index1, index2-1, memoizationDpArray);
 
             //Matching with every other char.
