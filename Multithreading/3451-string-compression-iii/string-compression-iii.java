@@ -1,6 +1,6 @@
 class Solution {
     public String compressedString(String word) {
-        String comp = "";
+        StringBuilder comp = new StringBuilder("");
 
         int low=0, high = word.length();
         while(low<high){
@@ -14,11 +14,11 @@ class Solution {
             int digitNum = '0' + count;
             char digitChar = (char) digitNum;
             // System.out.print(digitChar);
-            comp += digitChar;
-            comp += word.charAt(low);
+            comp.append(digitChar);
+            comp.append(word.charAt(low));
 
             low = i;
         }
-        return comp;
+        return comp.toString();
     }
 }
