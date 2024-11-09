@@ -43,19 +43,19 @@ class Solution {
 
 
         //Approach -1 (Failing some test cases wher X and N are large ~10^7)
-        long nth = n-1;
-        long merged = x;
-        int k = 0;
-        for(int i=0; i<32; i++){
-            if((x & 1<<i) == 0){
-                //moving bit kth bit of number (n-1) to the ith(as it is unset in X) position 
-                //And finally merging it with X to generate nth element of nums array.
-                //This is the Mask = (nth & (1<<k))
-                //Moving the mask to ith bit (nth & (1<<k) << (i-k))
-                merged = merged | ((nth & (1<<k)) << (i-k));
-                k++;
-            }
-        }
+        // long nth = n-1;
+        // long merged = x;
+        // int k = 0;
+        // for(int i=0; i<32; i++){
+        //     if((x & 1<<i) == 0){
+        //         //moving bit kth bit of number (n-1) to the ith(as it is unset in X) position 
+        //         //And finally merging it with X to generate nth element of nums array.
+        //         //This is the Mask = (nth & (1<<k))
+        //         //Moving the mask to ith bit (nth & (1<<k) << (i-k))
+        //         merged = merged | ((nth & (1<<k)) << (i-k));
+        //         k++;
+        //     }
+        // }
 
         // return merged;
 
