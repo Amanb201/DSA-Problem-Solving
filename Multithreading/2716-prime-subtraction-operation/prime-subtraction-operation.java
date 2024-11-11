@@ -1,10 +1,6 @@
 class Solution {
     public boolean primeSubOperation(int[] nums) {
-        // int maxi = 0;
-
-        // for(int i=0; i<nums.length; i++)
-        //     maxi = Math.max(maxi, nums[i]);
-
+        //Step-1: Finding all the prime numbers based on the constraints , so all primes within 0  to 1000
         int[] primeNumbers = new int[1000+1];
         //1 - Not Visited(Or Invalid), 0 - Composited NUmber, 1 - Prime Number
         for(int i=0; i<=1000; i++)
@@ -18,6 +14,10 @@ class Solution {
                     primeNumbers[j] = 0;
             }
         }
+
+        /**Step-2 Applying Greedy, Most optimal way is to make the current num as minimum as possible but
+         strictly greater than previous. Two ways to do this - first we can perform the operation of subtraction with
+          maximum possible prime number which valid as per rule or second way is to take the num as it is. */
         List<Integer> sortedNums = new ArrayList<>();
         for(int i=0; i<nums.length; i++){
             // System.out.println(sortedNums);
