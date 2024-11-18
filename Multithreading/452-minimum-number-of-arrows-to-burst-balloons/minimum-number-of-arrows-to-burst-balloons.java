@@ -14,15 +14,6 @@ class Solution {
         for(int point=0; point<totalPoints; point++){
             int lastMergedPoint = mergedIntersectedPoints.size() - 1;
 
-            // System.out.println("point="+point +" size="+mergedIntersectedPoints.size());
-
-            if(lastMergedPoint ==  0){
-                System.out.println(mergedIntersectedPoints.get(lastMergedPoint).get(1) < points[point][0]);
-                System.out.println("mergedIntersectedPoints.get(lastMergedPoint).get(1)="+mergedIntersectedPoints.get(lastMergedPoint).get(1));
-                System.out.println("points[point][0]="+points[point][0]);
-
-            }
-
             if(mergedIntersectedPoints.isEmpty() ||
                      mergedIntersectedPoints.get(lastMergedPoint).get(1) < points[point][0]){
                 List<Integer> currPoint = new ArrayList<>();
@@ -38,10 +29,8 @@ class Solution {
 
                 mergedIntersectedPoints.get(lastMergedPoint).set(0, start);
                 mergedIntersectedPoints.get(lastMergedPoint).set(1, end);
-                System.out.println("INSIDE point="+point +" size="+mergedIntersectedPoints.size());
 
             }
-            System.out.println("point="+point +" size="+mergedIntersectedPoints.size());
 
         }
 
