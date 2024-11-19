@@ -1,32 +1,49 @@
 class Solution {
     public boolean circularArrayLoop(int[] nums) {
-        HashMap<Integer, Boolean> map = new HashMap();
-        for(int i = 0; i < nums.length; i++) {
-            if(cycleExists(i, map, nums)) {
+        int size = nums.length;
+
+        //3 states required to track the cycle - Unvisited, Currently Exploring/Visiting, Visited
+        int visited[] = new int[size];
+
+        for(int i=0; i<size; i++){
+            if(isPathContainsCycle(nums, visited, i))
                 return true;
-            }
         }
         return false;
     }
 
-    private boolean cycleExists(int index, HashMap<Integer, Boolean> map, int[] nums) {
-        if(map.containsKey(index)) {
-            return map.get(index);
+    private boolean isPathContainsCycle(int[] nums, int[] visited, int node){
+        //Already Visited via some other Path, So It's not a cycle
+        if(visited[node] == 2)
+            return false;
+        
+        //1 = currently exploring, and we are again here hence, it contains cycle
+        if(visited[node] == 1)
+            return true;
+
+        /**
+            To Handle Movement in Circular array in Left and Right Directions
+
+            +ve Steps ==> (node+nums[node])%size
+            -ve Steps ==> 
+
+         */
+        int nextNode = (((node+nums[node])%nums.length) + nums.length) % nums.length;
+
+        //Self Loops/Cycle OR Cycle with moves in the same direction is allowed
+        if(node == nextNode || nums[node]*nums[nextNode] < 0){
+            visited[node] = 2;
+            return false;
         }
 
-        map.put(index, true); // mark as true to indicate currently visiting
-        int next = Math.floorMod((index + nums[index]), nums.length);
-        //OR
-        //int next = (((index+nums[index])%nums.length) + nums.length) % nums.length;
-        
-        if(next != index /* ensure cycle's length > 1 */
-                 && nums[next] * nums[index] > 0 /* ensure single direction */) {
-            if(cycleExists(next, map, nums)) {
-                return true;
-            }
-        }
-        
-        map.put(index, false); // mark as false to indicate done visiting, no cycle found
+        //Currently Exploring
+        visited[node] = 1;
+        boolean foundCycle = isPathContainsCycle(nums, visited, nextNode);
+
+        if(foundCycle)
+            return true;
+
+        visited[node] = 2;
         return false;
     }
 }
