@@ -4,7 +4,7 @@ class Solution {
         int currSum = 0;
         int maxSum = Integer.MIN_VALUE;
         int maxSumWithZeroDeletion = Integer.MIN_VALUE;
-        int[] maxSumFromLeftToRight = new int[size];
+        int[] currSumFromLeftToRight = new int[size];
 
         for(int i=0; i<size; i++){
             currSum += arr[i];
@@ -12,13 +12,13 @@ class Solution {
             maxSum = Math.max(currSum, maxSum);
 
             if(currSum<0)   currSum=0;
-            maxSumFromLeftToRight[i] = currSum;
+            currSumFromLeftToRight[i] = currSum;
         }
 
 
         maxSumWithZeroDeletion = maxSum;
         maxSum = Integer.MIN_VALUE;
-        int[] maxSumFromRightToLeft = new int[size];
+        int[] currSumFromRightToLeft = new int[size];
         
         currSum = 0;
         for(int i=size-1; i>=0; i--){
@@ -27,12 +27,12 @@ class Solution {
             maxSum = Math.max(currSum, maxSum);
 
             if(currSum<0)   currSum=0;
-            maxSumFromRightToLeft[i] = currSum;
+            currSumFromRightToLeft[i] = currSum;
         }
 
         maxSum = maxSumWithZeroDeletion;
         for(int i=0; i<=size-3; i++){
-            int sumWithDel = maxSumFromLeftToRight[i] + maxSumFromRightToLeft[i+2];
+            int sumWithDel = currSumFromLeftToRight[i] + currSumFromRightToLeft[i+2];
 
             if(sumWithDel != 0)
                 maxSum = Math.max(maxSum, sumWithDel);
