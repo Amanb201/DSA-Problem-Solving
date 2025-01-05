@@ -33,16 +33,16 @@ class Solution {
             if(ulpNodeU == ulpNodeV)
                 return;
 
-            if(rank.get(u) < rank.get(v)){
-                parent.set(u, v);
+            if(rank.get(ulpNodeU) < rank.get(ulpNodeV)){
+                parent.set(ulpNodeU, ulpNodeV);
             }
-            else if(rank.get(u) > rank.get(v)){
-                parent.set(v, u);
+            else if(rank.get(ulpNodeU) > rank.get(ulpNodeV)){
+                parent.set(ulpNodeV, ulpNodeU);
             }
             else{
-                parent.set(u, v);
-                int rankV = rank.get(v);
-                rank.set(v, rankV+1);
+                parent.set(ulpNodeU, ulpNodeV);
+                int rankV = rank.get(ulpNodeV);
+                rank.set(ulpNodeV, rankV+1);
             }
         }
 
