@@ -32,7 +32,6 @@ class Solution {
         }
 
         return binarySearchOnAnswer(minEdgeWt, maxEdgeWt, adjList);
-
     }
 
     int binarySearchOnAnswer(int low, int high, List<List<Pair>> adjList){
