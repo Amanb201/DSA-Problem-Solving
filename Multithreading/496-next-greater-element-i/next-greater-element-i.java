@@ -16,7 +16,7 @@ class Solution {
         for(int i=nums2.length-1; i>=0; i--){
             if(stk.isEmpty()){
                 nextGreaterElementInNums2.put(nums2[i], -1);
-                nums2NextGreater[i] = -1;
+                // nums2NextGreater[i] = -1;
                 stk.push(nums2[i]);
             }
             else{
@@ -25,11 +25,11 @@ class Solution {
 
                 if(stk.isEmpty()){
                     nextGreaterElementInNums2.put(nums2[i], -1);
-                    nums2NextGreater[i] = -1;
+                    // nums2NextGreater[i] = -1;
                 }   
                 else{
                     nextGreaterElementInNums2.put(nums2[i], stk.peek());
-                    nums2NextGreater[i] = stk.peek();
+                    // nums2NextGreater[i] = stk.peek();
                 } 
 
                 stk.push(nums2[i]);
