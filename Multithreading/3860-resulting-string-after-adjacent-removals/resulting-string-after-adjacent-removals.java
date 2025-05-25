@@ -29,13 +29,15 @@ class Solution {
 
         int i=0;
         while(i<str.length()){
-            //First Issue
+            //First Issue - For each iterations "str.toString()" is taking O(N) effectively N*N.
             int index = getIndexOfConsecutiveAlphabet(str.toString(), i);
             
             if(index == -1){
                 return str.toString();
             }
             else{
+        //While Deleting the Substring (Consecutive Alphabet Sequence), it is taking O(N-(end index of substr to be delete)) for shifting.
+                //This is costly. So, We can think of some approach which doesn't shift too frequently.
                 str.delete(index-1, index+1);
                 // str.deleteCharAt(index-1);
                 // str.deleteCharAt(index-1);
