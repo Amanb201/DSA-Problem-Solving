@@ -1,5 +1,50 @@
 class Solution {
+    /***
+        ab, ba, cc
+
+            a    b   c
+        a   0    1   0
+
+        b   1    0   0
+         
+        c   0    0   1
+
+
+    
+     */
     public int longestPalindrome(String[] words) {
+        // return approach1(words);
+        return approach2(words);
+    }
+
+    private int approach2(String[] words){
+        int[][] freqMap = new int[26][26];
+
+        int palindromeLen = 0;
+
+        for(String word: words){
+            int row = word.charAt(0) - 'a';
+            int col = word.charAt(1) - 'a';
+
+            if(freqMap[col][row]>0){
+                palindromeLen += 4;
+                freqMap[col][row]--;
+            }
+            else{
+                freqMap[row][col] += 1;  
+            }
+        }
+
+        for(int row=0; row<26; row++){
+            if(freqMap[row][row]>0){
+                palindromeLen += 2;
+                break;
+            }
+        }
+        return palindromeLen;
+    }
+
+    private int approach1(String[] words){
         Map<String, Integer> map = new HashMap<>();
         Map<String, Integer> repeatedCharsFreqMap = new HashMap<>();
 
