@@ -5,20 +5,29 @@ class Solution {
         int[] colMax = new int[n];
 
         for(int row=0; row<n; row++){
-            int currMax = Integer.MIN_VALUE;
+            int currRowMax = Integer.MIN_VALUE, currColMax = Integer.MIN_VALUE;
             for(int col=0; col<n; col++){   
-                currMax = Math.max(currMax, grid[row][col]);
+                currRowMax = Math.max(currRowMax, grid[row][col]);
+                currColMax = Math.max(currColMax, grid[col][row]);
             }
-            rowMax[row] = currMax;
+            rowMax[row] = currRowMax;
+            colMax[row] = currColMax;
         }
+        // for(int row=0; row<n; row++){
+        //     int currMax = Integer.MIN_VALUE;
+        //     for(int col=0; col<n; col++){   
+        //         currMax = Math.max(currMax, grid[row][col]);
+        //     }
+        //     rowMax[row] = currMax;
+        // }
 
-        for(int col=0; col<n; col++){
-            int currMax = Integer.MIN_VALUE;
-            for(int row=0; row<n; row++){   
-                currMax = Math.max(currMax, grid[row][col]);
-            }
-            colMax[col] = currMax;
-        }
+        // for(int col=0; col<n; col++){
+        //     int currMax = Integer.MIN_VALUE;
+        //     for(int row=0; row<n; row++){   
+        //         currMax = Math.max(currMax, grid[row][col]);
+        //     }
+        //     colMax[col] = currMax;
+        // }
 
         int maxSum = 0;
         for(int row=0; row<n; row++){
