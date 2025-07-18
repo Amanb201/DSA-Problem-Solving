@@ -15,10 +15,11 @@ class Solution {
             }
         }
 
-        // return approach1(wordsFreqMap, k);
-        return optimalApproach(wordsFreqMap, k);
+        return approach1(wordsFreqMap, k);
+        // return optimalApproach(wordsFreqMap, k);
     }
 
+    //O(NLogK)
     List<String> optimalApproach(Map<String, Integer> wordsFreqMap, int k){
         Queue<Pair<String, Integer>> pq = new PriorityQueue<>((a,b)->{
             return b.getValue() == a.getValue() ? b.getKey().compareTo(a.getKey()) : a.getValue() - b.getValue();
