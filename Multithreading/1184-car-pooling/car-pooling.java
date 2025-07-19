@@ -1,5 +1,14 @@
 class Solution {
     public boolean carPooling(int[][] trips, int capacity) {
+        return approach1(trips, capacity);
+
+    }
+    private boolean optimalApproach (int[][] trips, int capacity){
+        
+        return true;
+    }
+
+    private boolean approach1 (int[][] trips, int capacity){
         /**
             Time Complexity - O(NLogN) 
             Space Complexity - O(N)
