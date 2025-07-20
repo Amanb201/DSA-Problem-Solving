@@ -1,5 +1,40 @@
 class Solution {
     public int trap(int[] height) {
+        // return prefixPostfixMaxApproach(height);
+        return monotonicStackApproach(height);
+    }
+
+    // private int monotonicStackApproach(int[] height) {
+        
+    // }
+
+    private int monotonicStackApproach(int[] height) {
+        Stack<Integer> stk = new Stack<>();
+        int low = 0, high = height.length;
+
+        int waterTrapped = 0;
+        while(low<high){
+
+            //Maintaining Monotonic Stack to find Right Boundary
+            while(!stk.isEmpty() && height[low]>height[stk.peek()]){
+                int curr = stk.pop();
+
+                //No left boundary available
+                if(stk.isEmpty())   break;
+
+                //There can be multiple height in between leftMax and Low(Right Boundary)
+                int leftMax = stk.peek();
+                int boudedWaterHeight = Math.min(height[leftMax], height[low]) - height[curr];
+                int width = low - leftMax - 1;
+                waterTrapped += width * boudedWaterHeight;
+            }
+
+            stk.push(low++);
+        }
+        return waterTrapped;
+    }
+
+    private int prefixPostfixMaxApproach(int[] height) {
         int size = height.length;
         int[] leftToRight = new int[size];
         int[] rightToLeft = new int[size];
