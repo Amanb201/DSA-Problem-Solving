@@ -1,13 +1,53 @@
 class Solution {
     public int trap(int[] height) {
         // return prefixPostfixMaxApproach(height);
-        return monotonicStackApproach(height);
+        // return monotonicStackApproach(height);
+        return twoPointerApproach(height);
     }
 
-    // private int monotonicStackApproach(int[] height) {
-        
-    // }
+    /**
+        Time Complexity - O(N)
+        Space Complexity - O(1)
+     */
+    private int twoPointerApproach(int[] height) {
+        int left =0, right=height.length-1;
+        int leftMax = -1, rightMax = -1;
 
+        int waterTrapped = 0;
+        
+        while(left<right){
+            if(height[left]<=height[right]){
+                //Curr Left Index can be potentially hold some Water at this moment
+                if(leftMax > height[left]){
+                    //left boundary exists for the current left index, so can store some water
+                    waterTrapped += leftMax - height[left];
+                }
+                else{
+                    //New Potential Left Boundary
+                    leftMax = height[left];
+                }
+                left++;
+            }
+            else{
+                //Curr Right Index can be potentially hold some Water at this moment
+                if(rightMax > height[right]){
+                    //right boundary exists for the current left index, so can store some water
+                    waterTrapped += rightMax - height[right];
+                }
+                else{
+                    //New Potential Right Boundary
+                    rightMax = height[right];
+                }
+                right--;
+            }
+        }
+        return waterTrapped;
+    }
+
+    /**
+        Time Complexity - O(N)
+        Space Complexity - O(N)
+     */
     private int monotonicStackApproach(int[] height) {
         Stack<Integer> stk = new Stack<>();
         int low = 0, high = height.length;
@@ -34,6 +74,10 @@ class Solution {
         return waterTrapped;
     }
 
+    /**
+        Time Complexity - O(N)
+        Space Complexity - O(N)
+     */
     private int prefixPostfixMaxApproach(int[] height) {
         int size = height.length;
         int[] leftToRight = new int[size];
