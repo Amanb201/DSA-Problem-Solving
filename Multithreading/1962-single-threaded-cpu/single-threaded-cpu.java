@@ -75,40 +75,6 @@ class Solution {
                 availableAt = cpuTasks[taskIndex].enqueueTime;
             }
         }
-
-        // int processOrderIndex=0;
-        // for(Task task: cpuTasks){
-        //     int index = task.index;
-        //     int nextTaskEnqueueTime = task.enqueueTime;
-        //     int nextTaskProcessingTime = task.processingTime;
-        //     System.out.println("nextTaskEnqueueTime="+nextTaskEnqueueTime+"     nextTaskProcessingTime="+nextTaskProcessingTime);
-        //     System.out.println(schedulingQueue.size());
-        //     while(!schedulingQueue.isEmpty() && availableAt <= nextTaskEnqueueTime){
-        //         Task currTask = schedulingQueue.poll();
-        //         System.out.println("currTask Index="+currTask.index);
-                
-        //         availableAt = availableAt + currTask.processingTime;
-        //         processingOrder[processOrderIndex++] = currTask.index;
-        //     }   
-
-        //     if(!schedulingQueue.isEmpty())
-        //         schedulingQueue.add(new Task(index, nextTaskEnqueueTime, nextTaskProcessingTime));
-        //     else{
-        //         //Directly Process it
-        //         processingOrder[processOrderIndex++] = index;
-        //         availableAt += nextTaskProcessingTime;
-        //     }
-            
-        //     index++;     
-        // }
-
-        // while(!schedulingQueue.isEmpty()){
-        //     Task currTask = schedulingQueue.poll();
-        //     System.out.println("currTask Index="+currTask.index);
-            
-        //     processingOrder[processOrderIndex++] = currTask.index;
-        // }   
-
         return processingOrder;
     }
 }
