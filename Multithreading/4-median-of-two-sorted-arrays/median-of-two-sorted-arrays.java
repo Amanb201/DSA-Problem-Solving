@@ -6,12 +6,13 @@ class Solution {
 
     /**
         Binary Search
-        Time Complexity - O(Log(N+M))
+        Time Complexity - O(Log(Min(N,M)))
         Space Complexity - O(1)
      */
     private double optimalApproach (int[] nums1, int[] nums2){
         int arr1[], arr2[];
 
+        //always perform binary search on the smaller array
         if(nums1.length<nums2.length){
             arr1 = nums1; arr2 = nums2;
         }
