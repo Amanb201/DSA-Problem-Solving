@@ -1,7 +1,7 @@
 class Solution {
     public boolean circularArrayLoop(int[] nums) {
-        // return approach1(nums);
-        return optmialApproach(nums);
+        return approach1(nums);
+        // return optmialApproach(nums);
     }
 
     /***
